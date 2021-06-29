@@ -68,6 +68,8 @@ class AdminController extends Controller
         Comment::where('id',$id)->delete();
         return redirect('admin/comment');
     }
+
+
     //Logout
     public function logout()
     {

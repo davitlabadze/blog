@@ -6,7 +6,10 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Comment;
-
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 class HomeController extends Controller
 {
@@ -14,9 +17,9 @@ class HomeController extends Controller
     	
     	if($request->has('q')){
     		$q=$request->q;
-    		$posts=Post::where('title','like','%'.$q.'%')->orderBy('id','desc')->paginate(6);
+    		$posts=Post::where('title','like','%'.$q.'%')->orderBy('id','desc')->paginate(2);
     	}else{
-    		$posts=Post::orderBy('id','desc')->paginate(5);
+    		$posts=Post::orderBy('id','desc')->paginate(20);
     	}
         return view('home',['posts'=>$posts]);
     }
@@ -29,14 +32,14 @@ class HomeController extends Controller
     }
 	// All Categories
     function all_category(){
-        $categories=Category::orderBy('id','desc')->paginate(1);
+        $categories=Category::orderBy('id','desc')->paginate(9);
         return view('categories',['categories'=>$categories]);
     }
 	
 	 // All posts according to the category
 	 function category(Request $request,$cat_slug,$cat_id){
         $category=Category::find($cat_id);
-        $posts=Post::where('cat_id',$cat_id)->orderBy('id','desc')->paginate(5);
+        $posts=Post::where('cat_id',$cat_id)->orderBy('id','desc')->paginate(2);
         return view('category',['posts'=>$posts,'category'=>$category]);
     }
 
@@ -75,7 +78,7 @@ class HomeController extends Controller
         if($request->hasFile('post_thumb')){
             $image1=$request->file('post_thumb');
             $reThumbImage=time().'.'.$image1->getClientOriginalExtension();
-            $dest1=public_path('/imgs/thumb');
+            $dest1=public_path('/imgs/thumbimg');
             $image1->move($dest1,$reThumbImage);
         }else{
             $reThumbImage='na';
@@ -85,7 +88,7 @@ class HomeController extends Controller
         if($request->hasFile('post_image')){
             $image2=$request->file('post_image');
             $reFullImage=time().'.'.$image2->getClientOriginalExtension();
-            $dest2=public_path('/imgs/full');
+            $dest2=public_path('/imgs/fullimg');
             $image2->move($dest2,$reFullImage);
         }else{
             $reFullImage='na';
@@ -105,9 +108,24 @@ class HomeController extends Controller
         return redirect('save-post-form')->with('success','Post has been added');
     }
 
-    // Manage Posts
-    function manage_posts(Request $request){
-        $posts=Post::where('user_id',$request->user()->id)->orderBy('id','desc')->get();
-        return view('manage-posts',['data'=>$posts]);
+ 
+
+    public function user_account(Request $request)
+    {
+        $users = User::where('id',$request->user()->id)->get();
+
+        // Number of posts added by the user
+        $user = auth()->user()->id;
+        $count_posts = Post::where("user_id", "=", $user)->count();
+
+        //pagination 
+        $user_posts=Post::where("user_id", "=", $user)->paginate(2);
+    
+       
+
+        $posts_data=Post::where('user_id',$request->user()->id)->orderBy('id','desc')->get();
+        return view('profile',['data'=>$users,'count_post_data'=>$count_posts,'post_data'=>$posts_data,'user_post_data'=>$user_posts]);
     }
+
+   
 }

@@ -27,8 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.category.add')
-        ->with('title','Add New Category');
+        return view('backend.category.add')->with('title','Add New Category');
     }
 
     /**
@@ -40,14 +39,19 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required'
+            'title' => 'required',
+            'cat_image' => 'required',
         ]);
+        
         if($request->hasFile('cat_image')){
             $image=$request->file('cat_image');
             $reImage=time().'.'.$image->getClientOriginalExtension();
             $dest=public_path('/imgs');
             $image->move($dest,$reImage);
         }
+
+        
+
 
         $category = new Category;
         $category->title=$request->title;

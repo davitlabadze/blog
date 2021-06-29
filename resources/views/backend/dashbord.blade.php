@@ -1,14 +1,5 @@
 @extends('layout')
 @section('content')
-<div class="container-fluid">
-
-  <!-- Breadcrumbs-->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="index.html">Dashboard</a>
-    </li>
-    <li class="breadcrumb-item active">Overview</li>
-  </ol>
 
   <!-- Icon Cards-->
   <div class="row">
@@ -20,7 +11,7 @@
           </div>
           <div class="mr-5">{{\App\Models\Category::count()}} Categories</div>
         </div>
-        <a class="card-footer text-white clearfix small z-1" href="{{url('category')}}">
+        <a class="card-footer text-white clearfix small z-1" href="{{url('admin/category')}}">
           <span class="float-left">View Details</span>
           <span class="float-right">
             <i class="fas fa-angle-right"></i>
@@ -36,7 +27,7 @@
           </div>
           <div class="mr-5">{{\App\Models\Post::count()}} Posts</div>
         </div>
-        <a class="card-footer text-white clearfix small z-1" href="{{url('post')}}">
+        <a class="card-footer text-white clearfix small z-1" href="{{url('admin/post')}}">
           <span class="float-left">View Details</span>
           <span class="float-right">
             <i class="fas fa-angle-right"></i>
@@ -52,7 +43,7 @@
           </div>
           <div class="mr-5">{{\App\Models\Comment::count()}} Comments</div>
         </div>
-        <a class="card-footer text-white clearfix small z-1" href="{{url('comment')}}">
+        <a class="card-footer text-white clearfix small z-1" href="{{url('admin/comment')}}">
           <span class="float-left">View Details</span>
           <span class="float-right">
             <i class="fas fa-angle-right"></i>
@@ -68,7 +59,7 @@
           </div>
           <div class="mr-5">{{\App\Models\User::count()}} Users</div>
         </div>
-        <a class="card-footer text-white clearfix small z-1" href="{{url('user')}}">
+        <a class="card-footer text-white clearfix small z-1" href="{{url('admin/user')}}">
           <span class="float-left">View Details</span>
           <span class="float-right">
             <i class="fas fa-angle-right"></i>
@@ -76,7 +67,8 @@
         </a>
       </div>
     </div>
-  </div>
+    
+  </>
 
 
   <!-- DataTables Example -->
@@ -90,34 +82,34 @@
           <thead>
             <tr>
               <th>#</th>
+              <th>User</th>
               <th>Category</th>
               <th>Title</th>
               <th>Image</th>
               <th>Full</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
               @foreach($posts as $post)
               <tr>
                 <td>{{$post->id}}</td>
+                @if ($post->user_id) 
+                  <td>{{$post->user->name}}</td>
+                @else
+                  <td>{{ $post->user_id}}</td>
+                @endif
                 <td>{{$post->category->title}}</td>
                 <td>{{$post->title}}</td>
                 <td><img src="{{ asset('imgs/thumbimg').'/'.$post->thumb }}" width="100" /></td>
                 <td><img src="{{ asset('imgs/fullimg').'/'.$post->full_img }}" width="100" /></td>
-                <td>
-                  <a class="btn btn-primary btn-sm" href="{{url('admin/post/'.$post->id.'/edit')}}">Update</a>
-                  <a onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm" href="{{url('admin/post/'.$post->id.'/delete')}}">Delete</a>
-                </td>
               </tr>
               @endforeach
           </tbody>
         </table>
       </div>
     </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
   </div>
 
 </div>
-<!-- /.container-fluid -->
+
 @endsection

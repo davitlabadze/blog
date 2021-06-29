@@ -2,24 +2,13 @@
 @section('title',$title)
 @section('content')
 
-    
-<main>
-    <div class="container-fluid">
-
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Overview</li>
-        </ol>
 
 
         <!-- DataTables Example -->
         <div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i> Add Category
-                <a href="{{url('admin/category')}}" class="float-right btn btn-sm btn-dark">All Data</a>
+                <a href="{{url('admin/category')}}" class="float-right btn btn-sm btn-dark"><i class="fas fa-fw fa-eye"></i>  All Data</a>
             </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -58,8 +47,7 @@
                 </form>
             </div>
         </div>
-    </div>    
-</main>
-   <!-- /.container-fluid -->
+
+
 
 @endsection

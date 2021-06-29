@@ -47,8 +47,8 @@
                             </a>
                             <div class="collapse" id="collapseCategory" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                               <nav class="sb-sidenav-menu-nested nav">
-                                  <a class="nav-link" href="{{ route('category.index') }}">View All Category</a>
-                                  <a class="nav-link" href="{{ route('category.create') }}">Add New Category</a>
+                                  <a class="nav-link" href="{{ route('category.index') }}"><i class="fas fa-fw fa-eye"></i>View All Category</a>
+                                  <a class="nav-link" href="{{ route('category.create') }}"><i class="fas fa-fw fa-plus"></i>Add New Category</a>
                               </nav>
                             </div>
 
@@ -62,48 +62,34 @@
                             </a>
                             <div class="collapse" id="collapsePost" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                               <nav class="sb-sidenav-menu-nested nav">
-                                  <a class="nav-link" href="{{ route('post.index') }}">View All Post</a>
-                                  <a class="nav-link" href="{{ route('post.create') }}">Add New Post</a>
+                                  <a class="nav-link" href="{{ route('post.index') }}"><i class="fas fa-fw fa-eye"></i> View All Post</a>
+                                  <a class="nav-link" href="{{ route('post.create') }}"><i class="fas fa-fw fa-plus"></i> New Post</a>
                               </nav>
                             </div>
 
+                            {{-- Comments --}}
+                            <a class="nav-link collapsed" href="{{url('admin/comment')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-comments"></i></div>
+                                Comments
+                            </a>
 
-                            <!-- Comments -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('admin/comment')}}">
-                                    <i class="fas fa-fw fa-comments"></i>
-                                <span>Comments</span>
-                                </a>
-                            </li>
-                            <!-- Users -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('admin/user')}}">
-                                    <i class="fas fa-fw fa-users"></i>
-                                <span>Users</span>
-                                </a>
-                            </li>
-                            <!-- Settings -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('admin/setting')}}">
-                                    <i class="fas fa-fw fa-cog"></i>
-                                <span>Settings</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('admin/logout')}}">
-                                    <i class="fas fa-fw fa-sign-out-alt"></i>
-                                <span>logout</span>
-                                </a>
-                            </li>
-
-
-
-
-
-
-
-                          
+                            {{-- Users --}}
+                            <a class="nav-link collapsed" href="{{url('admin/user')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-users"></i></div>
+                                Users
+                            </a>
+                           
+                            {{-- Settings --}}
+                            <a class="nav-link collapsed" href="{{url('admin/setting')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-cog"></i></div>
+                                Settings
+                            </a>      
+                            
+                            {{-- logout --}}
+                            <a class="nav-link collapsed" href="{{url('admin/logout')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-sign-out-alt"></i></div>
+                                logout
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -114,7 +100,20 @@
             </div>
             {{-- content here --}}
         <div id="layoutSidenav_content">
-            @yield('content')
+            <main>
+                <div class="container-fluid p-2">
+            
+                  <!-- Breadcrumbs-->
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="{{ url('admin/dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Overview</li>
+                  </ol>
+            
+                @yield('content')
+                </div>
+            </main>
                 
 
             <footer class="py-4 bg-light mt-auto">

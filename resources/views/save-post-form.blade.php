@@ -1,5 +1,5 @@
 @extends('frontlayout')
-@section('title','Save Post')
+@section('title','edit profile')
 @section('content')
 		<div class="row">
 			<div class="col-md-8 mb-5">

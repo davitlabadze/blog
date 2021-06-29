@@ -2,15 +2,6 @@
 @section('meta_desc','All Users')
 @section('title','All Users')
 @section('content')
-<div class="container-fluid">
-
-  <!-- Breadcrumbs-->
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="index.html">Dashboard</a>
-    </li>
-    <li class="breadcrumb-item active">Overview</li>
-  </ol>
 
 
   <!-- DataTables Example -->
@@ -29,14 +20,7 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tfoot>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Action</th>
-            </tr>
-          </tfoot>
+          
           <tbody>
               @foreach($data as $user)
               <tr>
@@ -54,6 +38,5 @@
     </div>
   </div>
 
-</div>
-<!-- /.container-fluid -->
+
 @endsection

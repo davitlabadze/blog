@@ -21,6 +21,7 @@
 				</div>
 				<!-- Pagination -->
 				{{$posts->links()}}
+				
 			</div>
 			<!-- Right SIdebar -->
 			<div class="col-md-4">
