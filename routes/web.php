@@ -43,6 +43,8 @@ Route::get('/user-account',[HomeController::class,'user_account']);
 
 
 
+
+
 //admin route
 Route::get('/admin/login',[AdminController::class,'login']);
 Route::post('/admin/login',[AdminController::class,'submit_login']);
@@ -74,4 +76,6 @@ Route::get('admin/user/delete/{id}',[AdminController::class,'delete_user']);
 
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

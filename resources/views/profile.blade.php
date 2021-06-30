@@ -13,14 +13,17 @@
                 
                 <div class="card-body col-3">
                     <h5 class="card-title ml-5 mt-2"><b>{{ $user->name }}</b> </h5>
-                   
+
                     <p class="card-text ml-5"> <b>{{ $count_post_data }}</b> post</p>
                 </div>
                 <div class="card-body col-2">
-                    <button type="button" class="btn btn-light"><a href="{{ url('edit-profile') }}"><b>Edit Profile</b></a></button>
+                    <button type="button" class="btn btn-light"><a href="{{ url('update-profile') }}"><b>Edit Profile</b></a></button>
                 </div>
+                
             </div>
         @endforeach
+
+      
             <hr>
           {{-- user posts --}}
           @if(count($user_post_data)>0)

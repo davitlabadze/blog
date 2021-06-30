@@ -75,13 +75,15 @@ class HomeController extends Controller
         ]);
 
         // Post Thumbnail
+        $defaultImg = '/no-image.jpg';
+
         if($request->hasFile('post_thumb')){
             $image1=$request->file('post_thumb');
             $reThumbImage=time().'.'.$image1->getClientOriginalExtension();
             $dest1=public_path('/imgs/thumbimg');
             $image1->move($dest1,$reThumbImage);
         }else{
-            $reThumbImage='na';
+            $reThumbImage=$defaultImg;
         }
 
         // Post Full Image
@@ -91,7 +93,7 @@ class HomeController extends Controller
             $dest2=public_path('/imgs/fullimg');
             $image2->move($dest2,$reFullImage);
         }else{
-            $reFullImage='na';
+            $reFullImage=$defaultImg;
         }
 
         $post=new Post;
@@ -119,7 +121,8 @@ class HomeController extends Controller
         $count_posts = Post::where("user_id", "=", $user)->count();
 
         //pagination 
-        $user_posts=Post::where("user_id", "=", $user)->paginate(2);
+        $user_posts=Post::where("user_id", "=", $user)->cursorPaginate(2);
+        
     
        
 
@@ -127,5 +130,6 @@ class HomeController extends Controller
         return view('profile',['data'=>$users,'count_post_data'=>$count_posts,'post_data'=>$posts_data,'user_post_data'=>$user_posts]);
     }
 
+  
    
 }
