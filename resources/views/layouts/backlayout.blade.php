@@ -17,14 +17,7 @@
             <a class="navbar-brand ps-3 mr-1" href="{{ url('admin/dashboard') }}">Admin panel</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
+            
             
         </nav>
         <div id="layoutSidenav">
@@ -37,8 +30,13 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
+                            <a class="nav-link" href="{{ "/" }}" target="_blank">
+                                <div class="sb-nav-link-icon"><i class="far fa-window-maximize"></i></div>
+                                View WebSite
+                            </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
 
+                            {{-- category --}}
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-fw fa-list"></i></div>
                                 Category
@@ -53,7 +51,7 @@
                             </div>
 
 
-
+                            {{-- Post --}}
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePost" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-fw fa-address-card"></i></div>
                                 Post
@@ -67,17 +65,9 @@
                               </nav>
                             </div>
 
-                            {{-- Comments --}}
-                            <a class="nav-link collapsed" href="{{url('admin/comment')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-comments"></i></div>
-                                Comments
-                            </a>
+                           
 
-                            {{-- Users --}}
-                            <a class="nav-link collapsed" href="{{url('admin/user')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-fw fa-users"></i></div>
-                                Users
-                            </a>
+                           
                            
                             {{-- Settings --}}
                             <a class="nav-link collapsed" href="{{url('admin/setting')}}">
@@ -94,14 +84,14 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        Admin
                     </div>
                 </nav>
             </div>
             {{-- content here --}}
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid p-2">
+                <div class="container-fluid py-2">
             
                   <!-- Breadcrumbs-->
                   <ol class="breadcrumb">
@@ -111,13 +101,13 @@
                     <li class="breadcrumb-item active">Overview</li>
                   </ol>
             
-                @yield('content')
+                    @yield('content')
                 </div>
             </main>
                 
 
             <footer class="py-2 bg-light">
-                <div class="container-fluid px-4">
+                <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Your Website 2021</div>
                         <div>

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.backlayout')
 @section('title',$title)
 @section('content')
 
@@ -14,7 +14,7 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>User</th>
+            
             <th>Category</th>
             <th>Title</th>
             <th>Thumb</th>
@@ -26,11 +26,6 @@
           @foreach($data as $post)
           <tr>
             <td>{{ $post->id }}</td>
-            @if ($post->user_id) 
-            <td>{{$post->user->name}}</td>
-          @else
-            <td>{{ $post->user_id}}</td>
-          @endif
             <td>{{ $post->category->title }}</td>
             <td>{{ $post->title }}</td>
             <td><img src="{{ asset('imgs/thumbimg').'/'.$post->thumb }}" width="50px" /></td>

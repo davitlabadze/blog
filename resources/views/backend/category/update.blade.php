@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.backlayout')
 @section('title',$title)
 
 @section('content')

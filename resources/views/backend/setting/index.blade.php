@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.backlayout')
 @section('content')
 
 
@@ -26,15 +26,7 @@
             @csrf
             <table class="table table-bordered">
                 
-                <tr>
-                    <th>Comment Auto Approve </th>
-                    <td><input @if($setting) value="{{ $setting->comment_auto }}" @endif class="form-control" type="text" name="comment_auto"> </td>
-                </tr>
-
-                <tr>
-                    <th>User Auto Approve </th>
-                    <td><input  @if($setting) value="{{ $setting->user_auto }}" @endif class="form-control" type="text" name="user_auto"> </td>
-                </tr>
+                
                 <tr>
                     <th>Recent Post Limit </th>
                     <td><input  @if($setting) value="{{ $setting->recent_limit }}" @endif class="form-control" type="text" name="recent_limit"> </td>

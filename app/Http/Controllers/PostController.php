@@ -62,7 +62,7 @@ class PostController extends Controller
             $dest1=public_path('/imgs/thumbimg');
             $image1->move($dest1,$reThumbImage);
         }else{
-            $reThumbImage = 'null';
+            $reThumbImage = 'no-image.jpg';
         }
 
          //Post full image
@@ -72,7 +72,7 @@ class PostController extends Controller
             $dest2=public_path('/imgs/fullimg');
             $image2->move($dest2,$reFullImage);
         }else{
-            $reFullImage = 'null';
+            $reFullImage = 'no-image.jpg';
         }
 
         $post = new Post;
@@ -134,7 +134,7 @@ class PostController extends Controller
         
         //Post Thumbnail
         $defaultImg = public_path('/imgs/no-image.jpg');
-        dd($defaultImg);
+        // dd($defaultImg);
         if($request->hasFile('post_thumb')){
             $image1=$request->file('post_thumb');
             $reThumbImage=time().'.'.$image1->getClientOriginalExtension();

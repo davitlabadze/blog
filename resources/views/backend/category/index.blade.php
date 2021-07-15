@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.backlayout')
 @section('title',$title)
 @section('content')
 
@@ -8,7 +8,7 @@
       <div class="card mb-3">
         <div class="card-header">
           <i class="fas fa-table"></i> Add Category
-          <a href="{{url('admin/category/create')}}" class="float-right btn btn-sm btn-dark"> <i class="fas fa-fw fa-plus"></i> Create Data</a>
+          <a href="{{route('category.create')}}" class="float-right btn btn-sm btn-dark"> <i class="fas fa-fw fa-plus"></i> Create Data</a>
         </div>
         <div class="card-body">
           <div class="table-responsive">

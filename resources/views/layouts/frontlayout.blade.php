@@ -62,37 +62,6 @@
                 <li class="nav-item">
                 <a class="nav-link" href="{{ 'all-categories' }}">Categories</a>
                 </li>
-
-                @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('login') }}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('register') }}">Register</a>
-                </li>
-                @else
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('save-post-form') }}">Add Post</a>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" >
-                        <img src="/imgs/default-avatar.jpg" alt="..." class="rounded-circle " width="28px" height="28px">
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ url('user-account') }}"><i class="fas fa-fw fa-user"></i> Profile</a>
-                      <a class="dropdown-item" href=""><i class="fas fa-fw fa-cog"></i> Settings</a>
-
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item"  onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();" href="{{ url('logout') }}"><i class="fas fa-fw fa-sign-out-alt"></i> Logout</a>
-                    </div>
-                  </li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-                @endguest
-                
             </ul>
             </div>
         </div>
@@ -101,11 +70,41 @@
    
     {{-- get latest posts --}}
     <main class="container mt-4">
-
+        <div class="row">
         
         @yield('content')
 
+
+        <!-- Right SIdebar -->
+			<div class="col-md-4">
+				<!-- Recent Posts -->
+				<div class="card mb-4 ">
+					<h5 class="card-header">Recent Posts</h5>
+					<div class="list-group list-group-flush">
+						@if($recent_posts)
+							@foreach($recent_posts as $post)
+							<img class="card-img-top" src="{{asset('imgs/thumbimg/'.$post->thumb)}}" alt="Card image cap">
+								<a href="{{url('detail/'.Str::slug($post->title).'/'.$post->id)}}" class="list-group-item">{{$post->title}}</a>
+							@endforeach
+						@endif
+					</div>
+				</div>
+				<!-- Popular Posts -->
+				<div class="card mb-4">
+					<h5 class="card-header">Popular Posts</h5>
+					<div class="list-group list-group-flush">
+						@if ($popular_posts)
+                            @foreach ($popular_posts as $post )
+                                <a href="{{url('detail/'.Str::slug($post->title).'/'.$post->id)}}" class="list-group-item">{{ $post->title }} <span class="badge badge-dark float-right">View Post {{ $post->views }}</span></a>
+                            @endforeach
+                        @endif
+					</div>
+				</div>
+			</div>
+        </div>
     </main>
+
+    
     
 
     

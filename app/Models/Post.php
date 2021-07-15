@@ -28,4 +28,6 @@ class Post extends Model
     {
        return $this->belongsTo('user_id');
     }
+
+    
 }

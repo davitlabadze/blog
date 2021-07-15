@@ -1,8 +1,8 @@
-@extends('frontlayout')
+@extends('layouts.frontlayout')
 @section('title','Categories')
 @section('content')
-		<div class="row">
-			
+		
+			<div class="col-md-8">
 				<div class="row mb-5"> 
 					@if(count($categories)>0)
 						@foreach($categories as $category)
@@ -21,6 +21,5 @@
 				</div>
 				<!-- Pagination -->
 				{{$categories->links()}}
-			
-		</div>
+			</div>
 @endsection

@@ -31,16 +31,6 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/detail/{slug}/{id}',[HomeController::class,'detail']);
 Route::get('/category/{slug}/{id}',[HomeController::class,'category']);
 Route::get('/all-categories',[HomeController::class,'all_category']);
-Route::post('/save-comment/{slug}/{id}',[HomeController::class,'save_comment']);
-Route::get('/save-post-form',[HomeController::class,'save_post_form']);
-Route::post('/save-post-form',[HomeController::class,'save_post_data']);
-Route::get('/user-account',[HomeController::class,'user_account']);
-
-
-
-
-
-
 
 
 
@@ -64,18 +54,5 @@ Route::resource('/admin/post', PostController::class);
 Route::get('/admin/setting',[SettingController::class,'index']);
 Route::post('/admin/setting',[SettingController::class,'save_settings']);
 
-// Comment
-Route::get('admin/comment',[AdminController::class,'comments']);
-Route::get('admin/comment/delete/{id}',[AdminController::class,'delete_comment']);
 
-// User
-Route::get('admin/user',[AdminController::class,'users']);
-Route::get('admin/user/delete/{id}',[AdminController::class,'delete_user']);
-
-
-
-Auth::routes();
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
