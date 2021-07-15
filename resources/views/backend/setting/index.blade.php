@@ -37,12 +37,6 @@
                 </tr>
 
                 <tr>
-                    <th>Recent Comments Limit </th>
-                    <td><input  @if($setting) value="{{ $setting->recent_comment_limit }}" @endif class="form-control" type="text" name="recent_comment_limit"> </td>
-                </tr>
-
-
-                <tr>
                     <td colspan="2">
                         <input type="submit" class="btn btn-primary" />
                     </td>
