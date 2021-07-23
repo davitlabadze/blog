@@ -20,14 +20,12 @@ class SettingController extends Controller
         if($countData==0)
         {
             $data = new Setting();
-            $data->recent_limit=        $request->recent_limit;
-            $data->popular_limit=       $request->popular_limit; 
+            $data->recent_limit=$request->recent_limit;
             $data->save();
         }else{
             $firstData=Setting::first();
             $data = Setting::find($firstData->id);
-            $data->recent_limit=        $request->recent_limit;
-            $data->popular_limit=       $request->popular_limit; 
+            $data->recent_limit=$request->recent_limit;
             $data->save();
             
         }

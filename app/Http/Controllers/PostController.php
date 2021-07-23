@@ -62,7 +62,7 @@ class PostController extends Controller
             $dest1=public_path('/imgs/thumbimg');
             $image1->move($dest1,$reThumbImage);
         }else{
-            $reThumbImage = 'no-image.jpg';
+            $reThumbImage = '../no-image.jpg';
         }
 
          //Post full image
@@ -72,11 +72,10 @@ class PostController extends Controller
             $dest2=public_path('/imgs/fullimg');
             $image2->move($dest2,$reFullImage);
         }else{
-            $reFullImage = 'no-image.jpg';
+            $reFullImage = '../no-image.jpg';
         }
 
         $post = new Post;
-        $post->user_id=0;
         $post->cat_id=$request->category;
         $post->title=$request->title;
         $post->thumb=$reThumbImage;
@@ -133,15 +132,14 @@ class PostController extends Controller
         ]);
         
         //Post Thumbnail
-        $defaultImg = public_path('/imgs/no-image.jpg');
-        // dd($defaultImg);
+
         if($request->hasFile('post_thumb')){
             $image1=$request->file('post_thumb');
             $reThumbImage=time().'.'.$image1->getClientOriginalExtension();
             $dest1=public_path('/imgs/thumbimg');
             $image1->move($dest1,$reThumbImage);
         }else{
-            $reThumbImage = $defaultImg;
+            $reThumbImage = 'no-image.jpg';
         }
 
          //Post full image
@@ -151,7 +149,7 @@ class PostController extends Controller
             $dest2=public_path('/imgs/fullimg');
             $image2->move($dest2,$reFullImage);
         }else{
-            $reFullImage = $defaultImg;
+            $reFullImage = 'no-image.jpg';
         }
 
         $post = Post::find($id);

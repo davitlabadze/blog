@@ -8,7 +8,6 @@
 </p>
 
 # Features
-- - - 
 > Frontend:
  - Navbar
    - Search
@@ -29,9 +28,17 @@
    
 # How to run the App
 1. Either fork or download the app and open the folder in the cli
-2. Run `cp .env.example .env` next Run `php artisan key:generate`
-3. Install all dependencies using the `composer i` command
+2. Install all dependencies using the `composer i` command
+3. Run `cp .env.example .env` next Run `php artisan key:generate`
 4. Enter the correction of your database name in the `.env` file, etc.
 5. Run the command `php artisan migrate`
-6. Run the command `php artisan serve`
-7. Go to http://localhost:8000/
+6. Run the command `php artisan db:seed`
+7. Run the command `php artisan serve`
+8. Go to http://localhost:8000/
+9. Go to http://localhost:8000/admin/login and fill in the fields with `admin`
+
+# What the app looks like
+![alt_text](https://github.com/davitlabadze/blog/blob/master/app%20screen/frontend.png)
+![alt_text](https://github.com/davitlabadze/blog/blob/master/app%20screen/detail.png)
+![alt_text](https://github.com/davitlabadze/blog/blob/master/app%20screen/backend.png)
+

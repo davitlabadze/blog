@@ -28,11 +28,11 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>Title</th>
-                            <td><input type="text" name="title" class="form-control" /></td>
+                            <td><input type="text" name="title" required class="form-control" /></td>
                         </tr>
                         <tr>
                             <th>Detail</th>
-                            <td><input type="text" name="detail" class="form-control" /></td>
+                            <td><input type="text" name="detail" required class="form-control" /></td>
                         </tr>
                         <tr>
                             <th>Image</th>

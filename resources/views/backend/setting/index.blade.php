@@ -32,11 +32,6 @@
                     <td><input  @if($setting) value="{{ $setting->recent_limit }}" @endif class="form-control" type="text" name="recent_limit"> </td>
                 </tr>
                 <tr>
-                    <th>Popular Post Limit </th>
-                    <td><input @if($setting) value="{{ $setting->popular_limit }}" @endif class="form-control" type="text" name="popular_limit"> </td>
-                </tr>
-
-                <tr>
                     <td colspan="2">
                         <input type="submit" class="btn btn-primary" />
                     </td>

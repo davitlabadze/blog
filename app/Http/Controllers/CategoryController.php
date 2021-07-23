@@ -40,7 +40,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'cat_image' => 'required',
+            'detail' => 'required',
         ]);
         
         if($request->hasFile('cat_image')){
@@ -48,8 +48,9 @@ class CategoryController extends Controller
             $reImage=time().'.'.$image->getClientOriginalExtension();
             $dest=public_path('/imgs');
             $image->move($dest,$reImage);
+        }else{
+            $reImage = 'no-image.jpg';
         }
-
         
 
 
@@ -89,7 +90,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=>'required'
+            'title'=>'required',
         ]);
 
         if($request->hasFile('cat_image')){

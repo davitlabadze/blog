@@ -2,15 +2,15 @@
 {{-- @section('title',$category->title) --}}
 @section('content')
 		
-			<div class="col-md-8">
+			<div class="col-md-12">
 				<div class="row mb-5"> 
 					@if(count($posts)>0)
 						@foreach($posts as $post)
-						<div class="col-md-4">
+						<div class="col-md-4 mb-4">
 							<div class="card">
-							  <a href="{{url('detail/'.Str::slug($post->title).'/'.$post->id)}}"><img src="{{asset('imgs/thumbimg/'.$post->thumb)}}" class="card-img-top" alt="{{$post->title}}" /></a>
+							  <a href="{{url('detail/'.Str::slug($post->title).'/'.$post->id)}}"><img src="{{asset('imgs/thumbimg/'.$post->thumb)}}"  width="100px;" height="200px;" class="card-img-top" alt="{{$post->title}}" /></a>
 							  <div class="card-body">
-							    <h5 class="card-title"><a href="{{url('detail/'.Str::slug($post->title).'/'.$post->id)}}">{{$post->title}}</a></h5>
+							    <h5 class="card-title text-center"><a href="{{url('detail/'.Str::slug($post->title).'/'.$post->id)}}">{{$post->title}}</a></h5>
 							  </div>
 							</div>
 						</div>

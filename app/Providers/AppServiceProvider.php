@@ -27,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
-        view()->share('recent_posts',\App\Models\Post::orderBy('id','desc')->limit(5)->get());
-        view()->share('popular_posts',\App\Models\Post::orderBy('views','desc')->limit(5)->get());
+        View::share('recent_posts',\App\Models\Post::orderBy('id','desc')->limit(5)->get());
     }
 }

@@ -73,34 +73,7 @@
         <div class="row">
         
         @yield('content')
-
-
-        <!-- Right SIdebar -->
-			<div class="col-md-4">
-				<!-- Recent Posts -->
-				<div class="card mb-4 ">
-					<h5 class="card-header">Recent Posts</h5>
-					<div class="list-group list-group-flush">
-						@if($recent_posts)
-							@foreach($recent_posts as $post)
-							<img class="card-img-top" src="{{asset('imgs/thumbimg/'.$post->thumb)}}" alt="Card image cap">
-								<a href="{{url('detail/'.Str::slug($post->title).'/'.$post->id)}}" class="list-group-item">{{$post->title}}</a>
-							@endforeach
-						@endif
-					</div>
-				</div>
-				<!-- Popular Posts -->
-				<div class="card mb-4">
-					<h5 class="card-header">Popular Posts</h5>
-					<div class="list-group list-group-flush">
-						@if ($popular_posts)
-                            @foreach ($popular_posts as $post )
-                                <a href="{{url('detail/'.Str::slug($post->title).'/'.$post->id)}}" class="list-group-item">{{ $post->title }} <span class="badge badge-dark float-right">View Post {{ $post->views }}</span></a>
-                            @endforeach
-                        @endif
-					</div>
-				</div>
-			</div>
+        
         </div>
     </main>
 
