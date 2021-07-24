@@ -14,7 +14,7 @@
     - Route post and categories
 - Detail Post
 - Recent posts and Popular posts
-- Paginatio 
+- Pagination
 
 > Backend
 - Dashboard
